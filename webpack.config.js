@@ -1,7 +1,5 @@
 var webpack = require('webpack');
 
-var host = './';
-
 var description = 'Created by leo';
 description += '\n' + new Date();
 description += '\n';
@@ -31,13 +29,13 @@ description += '\n                          佛祖保佑          不要有bug';
 description += '\n';
 
 
-
+var host = './';
 
 module.exports = {
-    entry: host + 'entry.js',
+    entry: host + 'js/entry.js',
     output: {
-        // path: __dirname,
-        path: host,
+        // path: host + '',
+        path: __dirname + '/js/',
         filename: 'bundle.js'
     },
     module: {
