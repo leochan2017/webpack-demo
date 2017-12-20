@@ -61,9 +61,17 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|gif|jpg|svg)/,
-                loader: 'file-loader'
-            }
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                // 使用file-loader 的话是直接打包进成文件
+                // loader: 'file-loader',
+                // 使用url-loader 再配合参数的话是把小图片转成base-64
+                // loader: 'url-loader',
+                loaders: [
+                    'url-loader?limit=20000&name=assets/[name]-[hash:5].[ext]'
+                    // 压缩loader
+                    // 'image-webpack-loader'
+                ]
+            },
         ]
     },
     plugins: [

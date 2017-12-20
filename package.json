@@ -24,6 +24,7 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.9",
     "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
     "webpack": "^3.10.0"
   }
 }
