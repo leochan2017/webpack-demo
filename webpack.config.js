@@ -30,13 +30,26 @@ module.exports = {
                         loader: 'postcss-loader',
                         options: {
                             plugins: [
-                                require('postcss-import')(),
-                                require('autoprefixer')({
-                                    broswers: ['last 5 versions']
-                                })
+                                require('autoprefixer')()
                             ]
                         }
                     }
+                ]
+            },
+            {
+                test: /\.less$/,
+                loader: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                require('autoprefixer')()
+                            ]
+                        }
+                    },
+                    'less-loader'
                 ]
             }
         ]
