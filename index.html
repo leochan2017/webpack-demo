@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <meta charset="uth-8">
+        <title><%= htmlWebpackPlugin.options.title %></title>
+        <script>
+            // 这样子可以不用引入，直接把里面的代码拿过来行内使用
+            <%= compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
+        </script>
+     </head>
+    <body>
+        <script>
+            // 排除main， 留下其它
+            <% for(var k in htmlWebpackPlugin.files.chunks) { %>
+                <% if (k !== 'main') { %>
+                    <script src="<%= htmlWebpackPlugin.files.chunks[k].entry %>"></script>
+                <% } %>
+            <% } %>
+        </script>
+    </body>
+</html>

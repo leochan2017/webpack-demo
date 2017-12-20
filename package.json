@@ -1,19 +1,16 @@
 {
-    "name": "webpack-example",
-    "version": "1.0.0",
-    "description": "A simple webpack example.",
-    "main": "bundle.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "webpack"
-    ],
-    "author": "Leo",
-    "license": "MIT",
-    "devDependencies": {
-        "css-loader": "^0.21.0",
-        "style-loader": "^0.13.0",
-        "webpack": "^1.12.2"
-    }
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --config webpack.config.js --progress --display-modules --colors --display-reasons"
+  },
+  "author": "Leo",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.10.0"
+  }
 }

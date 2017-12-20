@@ -1,52 +1,41 @@
-var webpack = require('webpack');
-
-var description = 'Created by leo';
-description += '\n' + new Date();
-description += '\n';
-description += '\n                                  _oo8oo_';
-description += '\n                                 o8888888o';
-description += '\n                                 88" . "88';
-description += '\n                                 (| -_- |)';
-description += '\n                                 0\\  =  /0';
-description += '\n                               ___/\'===\'\\___';
-description += '\n                             .\' \\\\|     |// \'.';
-description += '\n                            / \\\\|||  :  |||// \\';
-description += '\n                           / _||||| -:- |||||_ \\';
-description += '\n                          |   | \\\\\\  -  /// |   |';
-description += '\n                          | \\_|  \'\'\\---/\'\'  |_/ |';
-description += '\n                          \\  .-\\__  \'-\'  __/-.  /';
-description += '\n                        ___\'. .\'  /--.--\\  \'. .\'___';
-description += '\n                     ."" \'<  \'.___\\_<|>_/___.\'  >\' "".';
-description += '\n                    | | :  `- \\`.:`\\ _ /`:.`/ -`  : | |';
-description += '\n                    \\  \\ `-.   \\_ __\\ /__ _/   .-` /  /';
-description += '\n                =====`-.____`.___ \\_____/ ___.`____.-`=====';
-description += '\n                                  `=---=`';
-description += '\n';
-description += '\n';
-description += '\n               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~';
-description += '\n';
-description += '\n                          佛祖保佑          不要有bug';
-description += '\n';
-
-
-var host = './';
+var htmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    entry: host + 'js/entry.js',
-    output: {
-        // path: host + '',
-        path: __dirname + '/js/',
-        filename: 'bundle.js'
+    entry: {
+        main: './src/script/main.js',
+        a: './src/script/a.js',
+        b: './src/script/b.js',
+        c: './src/script/c.js'
     },
-    module: {
-        loaders: [
-            { test: /\.css$/, loader: 'style!css' }
-        ]
+    output: {
+        path: __dirname + '/dist/', // 输出目录
+        publicPath: 'http://cdn.com', // 上线地址，如此参数存在，则生成的index.html绝对地址以这个开头的路径
+        filename: 'js/[name]-[chunkhash].js'
     },
     plugins: [
-        new webpack.BannerPlugin(description)
+        new htmlWebpackPlugin({
+            filename: 'a.html', // 输出文件名
+            template: 'index.html', // 模版html
+            inject: false,
+            title: 'This is a.html',
+            // chunks: ['main', 'a'], // 按需插入指定的js
+            excludeChunks: ['b', 'c'] // 和上面的方法反着来，意思是：除了声明的这2个，其余都排除
+        }),
+        new htmlWebpackPlugin({
+            filename: 'b.html', // 输出文件名
+            template: 'index.html', // 模版html
+            inject: false,
+            title: 'This is b.html',
+            // chunks: ['b'], // 按需插入指定的js
+            excludeChunks: ['a', 'c'] // 和上面的方法反着来，意思是：除了声明的这2个，其余都排除
+        }),
+        new htmlWebpackPlugin({
+            filename: 'c.html', // 输出文件名
+            template: 'index.html', // 模版html
+            inject: false,
+            title: 'This is c.html',
+            // chunks: ['c'], // 按需插入指定的js
+            excludeChunks: ['a', 'b'] // 和上面的方法反着来，意思是：除了声明的这2个，其余都排除
+        })
     ]
 }
-
-
-
