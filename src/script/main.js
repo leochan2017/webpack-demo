@@ -1,3 +1,0 @@
-function helloworld() {
-    // body...
-}
