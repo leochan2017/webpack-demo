@@ -1,3 +1,4 @@
+import './css/commom.css'
 import layer from './components/layer/layer.js'
 
 const App = function () {

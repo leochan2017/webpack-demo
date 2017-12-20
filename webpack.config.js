@@ -2,6 +2,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 module.exports = {
+    // context: __dirname,
     entry: './src/app.js',
     output: {
         path: __dirname + '/dist/', // 输出目录
@@ -19,6 +20,24 @@ module.exports = {
                 query: {
                     presets: ['latest'] // 告诉babel怎么处理我们的js
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                require('postcss-import')(),
+                                require('autoprefixer')({
+                                    broswers: ['last 5 versions']
+                                })
+                            ]
+                        }
+                    }
+                ]
             }
         ]
     },
