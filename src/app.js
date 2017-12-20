@@ -1,10 +1,12 @@
 import './css/commom.css'
-import layer from './components/layer/layer.js'
 
 const App = function () {
-    console.log(layer)
-    const NUM = 1
-    // alert(NUM)
+    let dom = document.getElementById('app')
+
+    dom.innerHTML = layer.tpl({
+        name: 'Leo',
+        arr: ['apple', 'mi', 'nokia']
+    })
 }
 
 new App()
