@@ -65,36 +65,45 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layer_layer_js__ = __webpack_require__(1);
 
 
-const App = function () {
-    console.log(__WEBPACK_IMPORTED_MODULE_0__components_layer_layer_js__["a" /* default */])
-    const NUM = 1
+var _layer = __webpack_require__(1);
+
+var _layer2 = _interopRequireDefault(_layer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+    console.log(_layer2.default);
+    var NUM = 1;
     // alert(NUM)
-}
+};
 
-new App()
+new App();
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 // import tpl from './layer.html'
 
 function layer() {
     return {
         name: 'layer',
         tpl: tpl
-    }
+    };
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (layer);
+exports.default = layer;
 
 /***/ })
 /******/ ]);

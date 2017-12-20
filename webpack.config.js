@@ -1,4 +1,5 @@
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 module.exports = {
     entry: './src/app.js',
@@ -11,8 +12,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: '/node_modules/', // 排除不用处理的目录
-                include: '/src/', // 指定处理的范围
+                // 排除不用处理的目录
+                // path.resolve 可以直接解释成绝对路径
+                exclude: path.resolve(__dirname, 'node_modules'),
+                include: path.resolve(__dirname, 'src'), // 指定处理的范围
                 query: {
                     presets: ['latest'] // 告诉babel怎么处理我们的js
                 }
